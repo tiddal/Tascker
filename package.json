@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/tiddal/Tascker/issues"
   },
-  "homepage": "https://github.com/tiddal/Tascker#readme"
+  "homepage": "https://github.com/tiddal/Tascker#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.3"
+  }
 }
