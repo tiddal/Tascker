@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-	name: String,
+	name: { type: String, required: true },
 	description: String,
-	author: String,
-	pin: String,
+	author: { type: String, required: true },
+	pin: { type: String, required: true },
 	createdAt: { type: Date, default: Date.now },
-	finishedAt: { type: Date },
+	finishedAt: { type: Date, default: null },
 	team: [String],
 	tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
 });

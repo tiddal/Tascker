@@ -1,4 +1,4 @@
-<form action="/projects/<%= project.id %>?_method=PUT" method="POST">
+<form action="/projects/<%= project.id %>?_method=PATCH" method="POST">
 	<p>Terminar projeto</p>
 	<input type="text" placeholder="PIN" name="project[pin]" />
 	<input type="submit" />
@@ -9,6 +9,12 @@
 	<input type="text" placeholder="Autor" name="project[author]" />
 	<input type="text" placeholder="Nome" name="project[name]" />
 	<input type="text" placeholder="Descrição" name="project[description]" />
+	<input type="text" placeholder="PIN" name="project[pin]" />
+	<input type="submit" />
+</form>
+<hr />
+<form action="/projects/<%= project.id %>?_method=DELETE" method="POST">
+	<p>Apagar projeto:</p>
 	<input type="text" placeholder="PIN" name="project[pin]" />
 	<input type="submit" />
 </form>
