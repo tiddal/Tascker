@@ -4,6 +4,11 @@ html {
 	background: linear-gradient(to right, #ffffff, #ece9e6);
 }
 
+body {
+	background: transparent;
+	font-family: 'Lato', sans-serif;
+}
+
 .bg {
 	background: #000000;
 	background: -webkit-linear-gradient(to right, #555, #111);
@@ -56,7 +61,20 @@ html {
 }
 
 .card-button:hover {
-	background: #555;
+	background: #11998e;
+	transition: 0.25s background-color ease-in-out;
+}
+
+.form-button {
+	background: #5584f9;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	border: none;
+}
+
+.form-button:hover {
+	background: #11998e;
 	transition: 0.25s background-color ease-in-out;
 }
 
@@ -77,12 +95,39 @@ html {
 }
 
 .nav-logo {
-	color: #5584f9;
 	text-transform: uppercase;
 	font-weight: bold;
+	font-size: 1.35rem;
 }
 
-.nav-links:hover {
+.nav-links:hover,
+.nav-logo:hover {
 	color: #5584f9;
 	transition: 0.25s color ease-in-out;
+	text-decoration: none;
+}
+
+.title {
+	color: grey;
+	text-transform: uppercase;
+}
+
+.warning {
+	background: #ffcd29;
+	color: #555;
+}
+
+.warning:hover {
+	background: #ffdf76;
+	color: #555;
+	transition: 0.25s background-color ease-in-out;
+}
+
+.danger {
+	background: #f73f38;
+}
+
+.danger:hover {
+	background: #b42e29;
+	transition: 0.25s background-color ease-in-out;
 }
