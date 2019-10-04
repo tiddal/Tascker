@@ -1,0 +1,63 @@
+html {
+	background-color: #474747;
+}
+
+.bg {
+	background: #000000;
+	background: -webkit-linear-gradient(to right, #777, #111);
+	background: linear-gradient(to right, #777, #111);
+}
+
+.icon {
+	font-size: 8rem;
+	color: #555;
+}
+
+.main {
+	background: #0052d4;
+	background: -webkit-linear-gradient(to left, #6fb1fc, #4364f7, #0052d4);
+	background: linear-gradient(to left, #6fb1fc, #4364f7, #0052d4);
+}
+
+.center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.shadow {
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card {
+	width: 18rem;
+	margin-top: 25vh;
+}
+
+.card-body {
+	border-top: 1px solid #ddd;
+}
+
+.card-body p {
+	font-size: 0.9rem;
+	color: #777;
+}
+
+.card-button {
+	width: 100%;
+	background: #5584f9;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.card-button:hover {
+	background: #555;
+	transition: 0.25s background-color ease-in-out;
+}
+
+.height-max {
+	height: 100vh;
+}

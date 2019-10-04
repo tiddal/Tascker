@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 
-const Project = require('../models/Project'),
-	Task = require('../models/Task');
+const Project = require('../models/Project');
+const Task = require('../models/Task');
 
 //  Projects ->  INDEX
 router.get('/projects', (req, res) => {
