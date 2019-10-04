@@ -1,3 +1,5 @@
+<% include ../partials/Header %>
+
 <form action="/projects/<%= project.id %>?_method=PATCH" method="POST">
 	<p>Terminar projeto</p>
 	<input type="text" placeholder="PIN" name="project[pin]" />
@@ -18,3 +20,5 @@
 	<input type="text" placeholder="PIN" name="project[pin]" />
 	<input type="submit" />
 </form>
+
+<% include ../partials/Footer %>
