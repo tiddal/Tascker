@@ -1,4 +1,4 @@
-<% include ../partials/Header %>
+<% include ../partials/Header %> <% if(project.finishedAt === null){ %>
 
 <h2 class="text-center title mt-5">Editar Projeto</h2>
 <div class="row">
@@ -83,7 +83,7 @@
 </div>
 
 <hr />
-
+<% }%>
 <h2 class="text-center title mt-5">Apagar Projeto</h2>
 <div class="row">
 	<form

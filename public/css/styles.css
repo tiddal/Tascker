@@ -38,16 +38,16 @@ body {
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.card {
+.landing-card {
 	width: 18rem;
 	margin-top: 25vh;
 }
 
-.card-body {
+.landing-card .card-body {
 	border-top: 1px solid #ddd;
 }
 
-.card-body p {
+.landing-card .card-body p {
 	font-size: 0.9rem;
 	color: #777;
 }
@@ -61,7 +61,24 @@ body {
 }
 
 .card-button:hover {
-	background: #11998e;
+	background: #38e280;
+	transition: 0.25s background-color ease-in-out;
+}
+
+.jumbo-bg {
+	background: #ece9e6;
+	background: -webkit-linear-gradient(to top, #ffffff, #f3f2f1);
+	background: linear-gradient(to top, #ffffff, #f3f2f1);
+}
+.jumbo-button {
+	background: #5584f9;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.jumbo-button:hover {
+	background: #38e280;
 	transition: 0.25s background-color ease-in-out;
 }
 
@@ -74,7 +91,7 @@ body {
 }
 
 .form-button:hover {
-	background: #11998e;
+	background: #38e280;
 	transition: 0.25s background-color ease-in-out;
 }
 
@@ -129,5 +146,53 @@ body {
 
 .danger:hover {
 	background: #b42e29;
+	transition: 0.25s background-color ease-in-out;
+}
+
+.lst-card {
+	border: none;
+}
+
+.lst:nth-child(4n + 1) .lst-card {
+	background: #11998e;
+	background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
+	background: linear-gradient(to right, #38ef7d, #11998e);
+}
+.lst:nth-child(4n + 2) .lst-card {
+	background: #ff8008;
+	background: -webkit-linear-gradient(to right, #ffc837, #ff8008);
+	background: linear-gradient(to right, #ffc837, #ff8008);
+}
+
+.lst:nth-child(4n + 3) .lst-card {
+	background: #3a7bd5;
+	background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
+	background: linear-gradient(to right, #3a6073, #3a7bd5);
+}
+
+.lst:nth-child(4n) .lst-card {
+	background: #8e0e00;
+	background: -webkit-linear-gradient(to right, #1f1c18, #8e0e00);
+	background: linear-gradient(to right, #1f1c18, #8e0e00);
+}
+
+.lst-card .icon {
+	color: #fefefe;
+}
+
+.lst-card-body {
+	color: black;
+	background: white;
+}
+
+.lst-card-button {
+	background: #5584f9;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.lst-card-button:hover {
+	background: #38e280;
 	transition: 0.25s background-color ease-in-out;
 }

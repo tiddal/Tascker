@@ -52,7 +52,7 @@ router.get('/projects/:id/edit', (req, res) => {
 router.put('/projects/:id', (req, res) => {
 	const pin = req.body.project.pin;
 	const id = req.params.id;
-	const query = { _id: id, pin: pin };
+	const query = { _id: id, pin: pin, finishedAt: null };
 	const update = req.body.project;
 	Project.findOneAndUpdate(query, update, (err, foundProject) => {
 		err || !foundProject
@@ -63,7 +63,7 @@ router.put('/projects/:id', (req, res) => {
 router.patch('/projects/:id', (req, res) => {
 	const pin = req.body.project.pin;
 	const id = req.params.id;
-	const query = { _id: id, pin: pin };
+	const query = { _id: id, pin: pin, finishedAt: null };
 	const update = { finishedAt: Date.now() };
 	Project.findOneAndUpdate(query, update, (err, foundProject) => {
 		err || !foundProject

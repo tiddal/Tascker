@@ -5,7 +5,8 @@ const path = require('path'),
 	methodOverride = require('method-override'),
 	port = process.env.PORT || 3000,
 	express = require('express'),
-	app = express();
+	app = express(),
+	moment = require('moment');
 
 mongoose
 	.connect(process.env.DBURL, {
@@ -25,6 +26,9 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
+
+moment.locale('pt');
+app.locals.moment = moment;
 
 app.get('/', (req, res) => {
 	res.render('Landing');
