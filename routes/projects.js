@@ -29,19 +29,13 @@ router.post('/projects', (req, res) => {
 
 //  Projects ->  SHOW
 router.get('/projects/:id', (req, res) => {
-	// Project.findById(req.params.id)
-	// 	.populate('tasks')
-	// 	.exec((err, foundProject) => {
-	// 		err || !foundProject
-	// 			? res.redirect('/projects')
-	// 			: res.render('projects/Show', { project: foundProject });
-	// 	});
-
-	Project.findById(req.params.id, (err, foundProject) => {
-		err || !foundProject
-			? res.redirect('/projects')
-			: res.render('projects/Show', { project: foundProject });
-	});
+	Project.findById(req.params.id)
+		.populate('tasks')
+		.exec((err, foundProject) => {
+			err || !foundProject
+				? res.redirect('/projects')
+				: res.render('projects/Show', { project: foundProject });
+		});
 });
 
 //  Projects ->  EDIT
@@ -53,7 +47,7 @@ router.get('/projects/:id/edit', (req, res) => {
 	});
 });
 
-//  Project ->  UPDATE
+//  Projects ->  UPDATE
 router.put('/projects/:id', (req, res) => {
 	const pin = req.body.project.pin;
 	const id = req.params.id;
@@ -72,19 +66,19 @@ router.patch('/projects/:id', (req, res) => {
 	const update = { finishedAt: Date.now() };
 	Project.findOneAndUpdate(query, update, (err, foundProject) => {
 		err || !foundProject
-			? res.redirect(`/projects/${id}/edit`)
+			? res.redirect(`/projects/${id}/edit#finish`)
 			: res.redirect('/projects/' + id);
 	});
 });
 
-//  Project ->  DELETE
+//  Projects ->  DELETE
 router.delete('/projects/:id', (req, res) => {
 	const pin = req.body.project.pin;
 	const id = req.params.id;
 	const query = { _id: id, pin: pin };
 	Project.findOneAndRemove(query, (err, foundProject) => {
 		err || !foundProject
-			? res.redirect(`/projects/${id}/edit`)
+			? res.redirect(`/projects/${id}/edit#delete`)
 			: res.redirect('/projects');
 	});
 });

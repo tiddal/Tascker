@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-	name: { type: String, required: true },
-	description: String,
-	author: { type: String, required: true },
+	name: { type: String, required: true, maxlength: 50 },
+	description: { type: String, maxlength: 100 },
+	author: { type: String, required: true, maxlength: 15 },
 	pin: { type: String, required: true },
 	createdAt: { type: Date, default: Date.now },
 	finishedAt: { type: Date, default: null },

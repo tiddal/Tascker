@@ -1,0 +1,105 @@
+<% include ../partials/Header %>
+<h2 class="text-center title mt-5">Concluir Tarefa</h2>
+<div class="row">
+	<form
+		action="/projects/<%= project_id %>/tasks/<%= task.id %>?_method=PATCH"
+		method="POST"
+		class="col-10 col-md-8 col-lg-6 mx-auto py-4 mb-5"
+	>
+		<div class="form-group">
+			<label for="pin">PIN</label>
+			<input
+				type="password"
+				class="form-control text-center"
+				id="pin"
+				aria-describedby="pinHelp"
+				name="project[pin]"
+				required
+			/>
+			<small id="pinHelp" class="form-text text-muted"
+				>Introduz o PIN do projeto para confirmares a conclusão desta
+				tarefa.</small
+			>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block form-button check">
+			Concluir Tarefa
+		</button>
+	</form>
+</div>
+
+<hr />
+<h2 class="text-center title mt-5">Editar Tarefa</h2>
+<div class="row">
+	<form
+		action="/projects/<%= project_id %>/tasks/<%= task.id %>?_method=PUT"
+		method="POST"
+		class="col-10 col-md-8 col-lg-6 mx-auto py-4 mb-5"
+		id="edit"
+	>
+		<div class="form-group">
+			<label for="name">Nome</label>
+			<input
+				type="text"
+				class="form-control"
+				id="name"
+				name="task[name]"
+				value="<%= task.name %>"
+				required
+			/>
+		</div>
+		<hr />
+		<div class="form-group">
+			<label for="pin">PIN</label>
+			<input
+				type="password"
+				class="form-control text-center"
+				id="pin"
+				aria-describedby="pinHelp"
+				name="project[pin]"
+				required
+			/>
+			<small id="pinHelp" class="form-text text-muted"
+				>Introduz o PIN do projeto para gravares as alterações.</small
+			>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block form-button">
+			Gravar Alterações
+		</button>
+	</form>
+</div>
+
+<hr />
+
+<h2 class="text-center title mt-5">Eliminar Tarefa</h2>
+<div class="row">
+	<form
+		action="/projects/<%= project_id %>/tasks/<%= task.id %>?_method=DELETE"
+		method="POST"
+		class="col-10 col-md-8 col-lg-6 mx-auto py-5 mb-5"
+		id="delete"
+	>
+		<div class="form-group">
+			<label for="pin">PIN</label>
+			<input
+				type="password"
+				class="form-control text-center"
+				id="pin"
+				aria-describedby="pinHelp"
+				name="project[pin]"
+				required
+			/>
+			<small id="pinHelp" class="form-text text-muted"
+				>Introduz o PIN do projeto para confiramares a eliminação desta tarefa.
+				Não vais conseguir recuperá-la!</small
+			>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block form-button danger">
+			Eliminar Tarefa
+		</button>
+	</form>
+</div>
+
+<% include ../partials/Footer %>

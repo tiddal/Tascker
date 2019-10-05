@@ -45,7 +45,9 @@
 					>
 
 					<% }else{ %>
-					<a href="#" class="btn btn-primary float-right form-button mx-2 mt-4"
+					<a
+						href="/projects/<%= project.id %>/tasks/new"
+						class="btn btn-primary float-right form-button mx-2 mt-4"
 						>Adicionar Tarefa</a
 					>
 					<% } %>
@@ -61,7 +63,7 @@
 	</div>
 </div>
 <div class="row mt-4">
-	<!-- 1 -->
+	<% project.tasks.forEach((task) => { %>
 	<div class="col-12 col-lg-6 my-3 lst ">
 		<div class="card lst-card task shadow">
 			<div class="row no-gutters">
@@ -70,56 +72,47 @@
 				</div>
 				<div class="col-10">
 					<div class="card-body lst-card-body h-100">
+						<% if(task.finishedAt === null) { %>
+						<a
+							href="/projects/<%= project.id %>/tasks/<%= task.id %>/edit#delete"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button danger"
+							title="Apagar Tarefa"
+							><i class="fas fa-trash"></i
+						></a>
+						<a
+							href="/projects/<%= project.id %>/tasks/<%= task.id %>/edit#edit"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button"
+							title="Editar Tarefa"
+							><i class="fas fa-pen"></i
+						></a>
+						<a
+							href="/projects/<%= project.id %>/tasks/<%= task.id %>/edit"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button check"
+							title="Terminar Tarefa"
+							><i class="fas fa-check"></i
+						></a>
+						<h5 class="card-title"><%= task.name %></h5>
+
+						<% } else {%>
 						<h5 class="card-title">
-							Tarefa Concluída
+							<%= task.name %>
 							<span
 								class="badge badge-pill badge-secondary float-right"
 								title="Tarefa Concluída"
 								><i class="fas fa-check"></i
 							></span>
 						</h5>
-
-						<small class="text-muted">tiddal - há 5 minutos</small>
+						<% } %>
+						<small class="text-muted"
+							><%= task.author %> - <%= moment(task.createdAt).fromNow()
+							%></small
+						>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- fim 1 -->
-	<div class="col-12 col-lg-6 my-3 lst ">
-		<div class="card lst-card shadow task">
-			<div class="row no-gutters">
-				<div class="col-2 text-center my-auto">
-					<span class="icon "><i class=" fas fa-tasks p-3 "></i></span>
-				</div>
-				<div class="col-10">
-					<div class="card-body lst-card-body h-100">
-						<a
-							href="#"
-							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button danger"
-							title="Apagar Tarefa"
-							><i class="fas fa-trash"></i
-						></a>
-						<a
-							href="#"
-							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button"
-							title="Editar Tarefa"
-							><i class="fas fa-pen"></i
-						></a>
-						<a
-							href="#"
-							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button check"
-							title="Terminar Tarefa"
-							><i class="fas fa-check"></i
-						></a>
-						<h5 class="card-title">Tarefa</h5>
-						<small class="text-muted">tiddal - há 5 minutos</small>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- fim 2 -->
+	<% }) %>
 </div>
 
 <% include ../partials/Footer %>

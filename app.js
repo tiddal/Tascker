@@ -38,5 +38,7 @@ app.listen(port, process.env.IP, () => {
 	console.log(`Server running on port ${port}`);
 });
 
-const projectRoutes = require('./routes/projects');
-app.use(projectRoutes);
+const projectsRoutes = require('./routes/projects');
+const tasksRoutes = require('./routes/tasks');
+app.use(projectsRoutes);
+app.use(tasksRoutes);

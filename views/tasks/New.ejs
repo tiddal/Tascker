@@ -1,0 +1,57 @@
+<% include ../partials/Header %>
+
+<h2 class="text-center title mt-5">Nova Tarefa</h2>
+<div class="row">
+	<form
+		action="/projects/<%= project.id %>/tasks"
+		method="POST"
+		class="col-10 col-md-8 col-lg-6 mx-auto py-4"
+	>
+		<div class="form-group">
+			<label for="author">Autor (*)</label>
+			<input
+				type="text"
+				class="form-control"
+				id="author"
+				name="task[author]"
+				required
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="name">Nome da tarefa(*)</label>
+			<input
+				type="text"
+				class="form-control"
+				id="name"
+				aria-describedby="nameHelp"
+				name="task[name]"
+				required
+			/>
+			<small id="nameHelp" class="form-text text-muted"
+				>Dá um nome à tua tarefa!</small
+			>
+		</div>
+		<hr />
+		<div class="form-group">
+			<label for="pin">PIN</label>
+			<input
+				type="password"
+				class="form-control text-center"
+				id="pin"
+				aria-describedby="pinHelp"
+				name="project[pin]"
+				required
+			/>
+			<small id="pinHelp" class="form-text text-muted"
+				>Introduz o PIN do projeto para adicionares esta tarefa.</small
+			>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block form-button">
+			Adicionar Tarefa
+		</button>
+	</form>
+</div>
+
+<% include ../partials/Footer %>
