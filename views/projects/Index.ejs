@@ -2,13 +2,14 @@
 <div class="jumbotron jumbo-bg shadow">
 	<h1 class="display-4">Bem-vindo ao Tascker!</h1>
 	<p class="lead text-muted">
-		This is a simple hero unit, a simple jumbotron-style component for calling
-		extra attention to featured content or information.
+		Uma ferramenta que te premite criar projetos e adicionar-lhes todas as suas
+		respetivas tarefas para que tenhas tudo organizado e planeado!
 	</p>
 	<hr class="my-4" />
 	<p class="text-muted">
-		It uses utility classes for typography and spacing to space content out
-		within the larger container.
+		Começa já a pôr as tuas ideias em prática! Clica no botão a baixo para
+		iniciares um projeto. Utiliza o teu PIN para partilhares o teu projeto com
+		outras pessoas da tua confiança!
 	</p>
 	<a
 		class="btn btn-primary jumbo-button mt-4"
@@ -34,7 +35,17 @@
 				</h5>
 
 				<h6 class="card-subtitle mb-2 text-muted">
-					<%= project.author %> - <%= moment(project.createdAt).fromNow() %>
+					<%= project.author %> - <% if(project.finishedAt !== null){ %>
+					concluído <%= moment(project.finishedAt).fromNow()%> <%}else{%>
+					iniciado <%= moment(project.createdAt).fromNow() %><%};%><small
+						class="float-right mx-1"
+						title="Tarefas"
+						><%= project.tasks.length %> <i class=" fas fa-tasks "></i
+					></small>
+					%><small class="float-right mx-1" title="Tempo de trabalho"
+						><%= moment.duration(project.duration).minutes() %>'
+						<i class=" far fa-clock "></i
+					></small>
 				</h6>
 				<hr />
 				<p class="card-text">

@@ -37,16 +37,17 @@ router.post('/projects/:id/tasks', (req, res) => {
 router.get('/projects/:id/tasks/:task_id/edit', (req, res) => {
 	const taskId = req.params.task_id;
 	const projectId = req.params.id;
-	const query = { _id: taskId, finishedAt: null };
-	Project.findById(projectId, (err, foundProject) => {
+	const projectQuery = { _id: projectId, finishedAt: null };
+	const taskQuery = { _id: taskId, finishedAt: null };
+	Project.findOne(projectQuery, (err, foundProject) => {
 		err || !foundProject
 			? res.redirect('/projects')
-			: Task.findOne(query, (err, foundTask) => {
+			: Task.findOne(taskQuery, (err, foundTask) => {
 					err || !foundTask
 						? res.redirect('/projects')
 						: res.render('tasks/Edit', {
 								task: foundTask,
-								project_id: projectId
+								project: foundProject
 						  });
 			  });
 	});
@@ -82,10 +83,15 @@ router.patch('/projects/:id/tasks/:task_id', (req, res) => {
 	Project.findOne(projectQuery, (err, foundProject) => {
 		err || !foundProject
 			? res.redirect(`/projects/${projectId}/tasks/${taskId}/edit`)
-			: Task.findOneAndUpdate(taskQuery, update, (err, foundTask) => {
+			: Task.findOne(taskQuery, (err, foundTask) => {
 					err || !foundTask
 						? res.redirect('/projects')
-						: res.redirect('/projects/' + projectId);
+						: ((foundTask.finishedAt = Date.now()),
+						  (foundTask.duration = foundTask.finishedAt - foundTask.createdAt),
+						  foundTask.save(),
+						  (foundProject.duration += foundTask.duration),
+						  foundProject.save(),
+						  res.redirect('/projects/' + projectId));
 			  });
 	});
 });

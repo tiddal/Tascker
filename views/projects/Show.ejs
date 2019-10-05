@@ -34,29 +34,43 @@
 
 				<hr />
 
-				<p class="card-text"><%= project.description %></p>
 				<p class="card-text">
-					<small class="text-muted"
-						>Iniciado <%= moment(project.createdAt).fromNow() %></small
-					>
-					<% if(project.finishedAt !== null){ %>
-					<small class="text-muted"
-						>- Concluído <%= moment(project.finishedAt).fromNow() %></small
-					>
-
-					<% }else{ %>
+					<%= project.description %> <% if(project.finishedAt === null){ %>
 					<a
 						href="/projects/<%= project.id %>/tasks/new"
 						class="btn btn-primary float-right form-button mx-2 mt-4"
 						>Adicionar Tarefa</a
+					><% } %>
+				</p>
+				<p class="card-text">
+					<% if(project.finishedAt === null){ %>
+					<small class="text-muted"
+						>Iniciado <%= moment(project.createdAt).fromNow() %></small
+					>
+					<% }else{ %>
+					<small class="text-muted"
+						>Terminado <%= moment(project.finishedAt).fromNow() %></small
 					>
 					<% } %>
-				</p>
-
-				<p class="card-text">
-					<small class="text-muted"
-						><%= project.tasks.length %> tarefas, 0h 0m</small
+					<small class="text-muted mx-3"
+						>Tarefas: <%= project.tasks.length %>
+					</small>
+					<small class="text-muted mx-3">
+						Tempo de trabalho: <% const workTime =
+						moment.duration(project.duration) %> <%= workTime.hours() %>h <%=
+						workTime.minutes() %>m</small
 					>
+					<% if(project.finishedAt !== null){ %>
+					<small class="text-muted mx-3"
+						>Duração do projeto: <% const projectDuration =
+						moment.duration(project.finishedAt-project.createdAt) %> <%=
+						projectDuration.hours() %>h <%= projectDuration.minutes() %>m
+					</small>
+					<small class="text-muted mx-3">
+						Iniciado a: <%= moment(project.createdAt).format('DD/MM/YYYY')
+						%></small
+					>
+					<% } %>
 				</p>
 			</div>
 		</div>
@@ -102,11 +116,16 @@
 								><i class="fas fa-check"></i
 							></span>
 						</h5>
+						<% } %>  <% if(task.finishedAt === null){
+						%><small class="text-muted"><%= task.author %> -
+							começou <%= moment(task.createdAt).fromNow() %> <% } else {
+							%><small class="text-muted"><%= task.author %> -
+							terminou <%= moment(task.finishedAt).fromNow() %>
+						</small>
+						<small class="text-muted float-right mx-1"><%= moment.duration(task.duration).minutes() %>'
+							<i class=" far fa-clock "></i>
+						</small>
 						<% } %>
-						<small class="text-muted"
-							><%= task.author %> - <%= moment(task.createdAt).fromNow()
-							%></small
-						>
 					</div>
 				</div>
 			</div>

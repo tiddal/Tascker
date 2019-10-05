@@ -15,6 +15,7 @@
 				id="name"
 				name="project[name]"
 				value="<%= project.name %>"
+				maxlength="50"
 				required
 			/>
 		</div>
@@ -27,6 +28,7 @@
 				id="description"
 				value="<%= project.description %>"
 				name="project[description]"
+				maxlength="100"
 			/>
 		</div>
 		<hr />
@@ -38,6 +40,7 @@
 				id="pin"
 				aria-describedby="pinHelp"
 				name="project[pin]"
+				maxlength="10"
 				required
 			/>
 			<small id="pinHelp" class="form-text text-muted"
@@ -69,11 +72,13 @@
 				id="pin"
 				aria-describedby="pinHelp"
 				name="project[pin]"
+				maxlength="10"
 				required
 			/>
 			<small id="pinHelp" class="form-text text-muted"
 				>Introduz o PIN do projeto para confirmares a sua conclusão. Não vais
-				puder adicionar ou remover mais tarefas.</small
+				puder adicionar ou remover mais tarefas. Tens que terminar todas as
+				tarefas antes de concluir um projeto.</small
 			>
 		</div>
 
@@ -101,6 +106,7 @@
 				id="pin"
 				aria-describedby="pinHelp"
 				name="project[pin]"
+				maxlength="10"
 				required
 			/>
 			<small id="pinHelp" class="form-text text-muted"

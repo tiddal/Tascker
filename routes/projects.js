@@ -63,11 +63,19 @@ router.patch('/projects/:id', (req, res) => {
 	const pin = req.body.project.pin;
 	const id = req.params.id;
 	const query = { _id: id, pin: pin, finishedAt: null };
-	const update = { finishedAt: Date.now() };
-	Project.findOneAndUpdate(query, update, (err, foundProject) => {
+	Project.findOne(query, (err, foundProject) => {
 		err || !foundProject
 			? res.redirect(`/projects/${id}/edit#finish`)
-			: res.redirect('/projects/' + id);
+			: Task.findOne(
+					{ _id: { $in: foundProject.tasks }, finishedAt: null },
+					(err, foundTask) => {
+						err || foundTask
+							? res.redirect('/projects/' + id)
+							: ((foundProject.finishedAt = Date.now()),
+							  foundProject.save(),
+							  res.redirect('/projects/' + id));
+					}
+			  );
 	});
 });
 
@@ -79,7 +87,11 @@ router.delete('/projects/:id', (req, res) => {
 	Project.findOneAndRemove(query, (err, foundProject) => {
 		err || !foundProject
 			? res.redirect(`/projects/${id}/edit#delete`)
-			: res.redirect('/projects');
+			: Task.deleteMany({ _id: { $in: foundProject.tasks } }, (err) => {
+					err
+						? res.redirect(`/projects/${id}/edit#delete`)
+						: res.redirect('/projects');
+			  });
 	});
 });
 
