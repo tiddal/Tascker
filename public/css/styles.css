@@ -91,7 +91,7 @@ body {
 }
 
 .form-button:hover {
-	background: #38e280;
+	background: #3a6073;
 	transition: 0.25s background-color ease-in-out;
 }
 
@@ -129,6 +129,14 @@ body {
 	text-transform: uppercase;
 }
 
+.check {
+	background: #38ef7d;
+}
+
+.check:hover {
+	background: #11998e;
+}
+
 .warning {
 	background: #ffcd29;
 	color: #555;
@@ -153,31 +161,41 @@ body {
 	border: none;
 }
 
-.lst:nth-child(4n + 1) .lst-card {
+.lst:nth-child(5n + 1) .lst-card {
 	background: #11998e;
 	background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
 	background: linear-gradient(to right, #38ef7d, #11998e);
 }
-.lst:nth-child(4n + 2) .lst-card {
+.lst:nth-child(5n + 2) .lst-card {
 	background: #ff8008;
 	background: -webkit-linear-gradient(to right, #ffc837, #ff8008);
 	background: linear-gradient(to right, #ffc837, #ff8008);
 }
 
-.lst:nth-child(4n + 3) .lst-card {
+.lst:nth-child(5n + 3) .lst-card {
 	background: #3a7bd5;
 	background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
 	background: linear-gradient(to right, #3a6073, #3a7bd5);
 }
 
-.lst:nth-child(4n) .lst-card {
+.lst:nth-child(5n + 4) .lst-card {
 	background: #8e0e00;
 	background: -webkit-linear-gradient(to right, #1f1c18, #8e0e00);
 	background: linear-gradient(to right, #1f1c18, #8e0e00);
 }
 
+.lst:nth-child(5n) .lst-card {
+	background: #f4c4f3;
+	background: -webkit-linear-gradient(to right, #fc67fa, #f4c4f3);
+	background: linear-gradient(to right, #fc67fa, #f4c4f3);
+}
+
 .lst-card .icon {
 	color: #fefefe;
+}
+.task .icon {
+	color: #fefefe;
+	font-size: 3rem;
 }
 
 .lst-card-body {
@@ -195,4 +213,10 @@ body {
 .lst-card-button:hover {
 	background: #38e280;
 	transition: 0.25s background-color ease-in-out;
+}
+
+.project-card .lst-card {
+	background: #3494e6;
+	background: -webkit-linear-gradient(to right, #ec6ead, #3494e6);
+	background: linear-gradient(to right, #ec6ead, #3494e6);
 }

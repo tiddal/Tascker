@@ -36,7 +36,12 @@ router.get('/projects/:id', (req, res) => {
 	// 			? res.redirect('/projects')
 	// 			: res.render('projects/Show', { project: foundProject });
 	// 	});
-	res.render('projects/Show');
+
+	Project.findById(req.params.id, (err, foundProject) => {
+		err || !foundProject
+			? res.redirect('/projects')
+			: res.render('projects/Show', { project: foundProject });
+	});
 });
 
 //  Projects ->  EDIT

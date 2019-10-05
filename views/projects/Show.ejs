@@ -1,5 +1,125 @@
 <% include ../partials/Header %>
 
-<h1>Show working</h1>
+<div class="row">
+	<div class="col-12 my-2 project-card">
+		<div class="card lst-card shadow ">
+			<span class="icon text-center"><i class="fas fa-layer-group"></i></span>
+			<div class="card-body lst-card-body">
+				<h5 class="card-title">
+					<%= project.name %>
+					<span class="text-muted"> - <%= project.author %></span>
+					<a
+						href="/projects/<%= project.id %>/edit#delete"
+						class="btn btn-sm btn-primary float-right mx-1 form-button danger"
+						title="Apagar Projeto"
+						><i class="fas fa-trash"></i
+					></a>
+					<% if(project.finishedAt === null){ %>
+					<a
+						href="/projects/<%= project.id %>/edit#finish"
+						class="btn btn-sm btn-primary float-right mx-1 form-button warning"
+						title="Concluír Projeto"
+						><i class="fas fa-archive"></i
+					></a>
+					<a
+						href="/projects/<%= project.id %>/edit"
+						class="btn btn-sm btn-primary float-right form-button mx-1"
+						title="Editar Projeto"
+						><i class="fas fa-pen"></i
+					></a>
+					<% } else{ %>
+					<span class="badge badge-pill badge-secondary ml-2">Concluído</span>
+					<% } %>
+				</h5>
+
+				<hr />
+
+				<p class="card-text"><%= project.description %></p>
+				<p class="card-text">
+					<small class="text-muted"
+						>Iniciado <%= moment(project.createdAt).fromNow() %></small
+					>
+					<% if(project.finishedAt !== null){ %>
+					<small class="text-muted"
+						>- Concluído <%= moment(project.finishedAt).fromNow() %></small
+					>
+
+					<% }else{ %>
+					<a href="#" class="btn btn-primary float-right form-button mx-2 mt-4"
+						>Adicionar Tarefa</a
+					>
+					<% } %>
+				</p>
+
+				<p class="card-text">
+					<small class="text-muted"
+						><%= project.tasks.length %> tarefas, 0h 0m</small
+					>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row mt-4">
+	<!-- 1 -->
+	<div class="col-12 col-lg-6 my-3 lst ">
+		<div class="card lst-card task shadow">
+			<div class="row no-gutters">
+				<div class="col-2 text-center my-auto">
+					<span class="icon "><i class=" fas fa-tasks p-3 "></i></span>
+				</div>
+				<div class="col-10">
+					<div class="card-body lst-card-body h-100">
+						<h5 class="card-title">
+							Tarefa Concluída
+							<span
+								class="badge badge-pill badge-secondary float-right"
+								title="Tarefa Concluída"
+								><i class="fas fa-check"></i
+							></span>
+						</h5>
+
+						<small class="text-muted">tiddal - há 5 minutos</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- fim 1 -->
+	<div class="col-12 col-lg-6 my-3 lst ">
+		<div class="card lst-card shadow task">
+			<div class="row no-gutters">
+				<div class="col-2 text-center my-auto">
+					<span class="icon "><i class=" fas fa-tasks p-3 "></i></span>
+				</div>
+				<div class="col-10">
+					<div class="card-body lst-card-body h-100">
+						<a
+							href="#"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button danger"
+							title="Apagar Tarefa"
+							><i class="fas fa-trash"></i
+						></a>
+						<a
+							href="#"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button"
+							title="Editar Tarefa"
+							><i class="fas fa-pen"></i
+						></a>
+						<a
+							href="#"
+							class="btn btn-sm btn-primary float-right mx-1 my-3 form-button check"
+							title="Terminar Tarefa"
+							><i class="fas fa-check"></i
+						></a>
+						<h5 class="card-title">Tarefa</h5>
+						<small class="text-muted">tiddal - há 5 minutos</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- fim 2 -->
+</div>
 
 <% include ../partials/Footer %>
