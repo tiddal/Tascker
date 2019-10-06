@@ -43,7 +43,7 @@
 						><%= project.tasks.length %> <i class=" fas fa-tasks "></i
 					></small>
 					%><small class="float-right mx-1" title="Tempo de trabalho"
-						><%= moment.duration(project.duration).minutes() %>'
+						><%= Math.floor(moment.duration(project.duration).asMinutes()) %>'
 						<i class=" far fa-clock "></i
 					></small>
 				</h6>
