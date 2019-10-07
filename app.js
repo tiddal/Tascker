@@ -30,15 +30,13 @@ app.use(express.static(__dirname + '/public'));
 moment.locale('pt');
 app.locals.moment = moment;
 
-app.get('/', (req, res) => {
-	res.render('Landing');
-});
-
 app.listen(port, process.env.IP, () => {
 	console.log(`Server running on port ${port}`);
 });
 
+const indexRoutes = require('./routes/index');
 const projectsRoutes = require('./routes/projects');
 const tasksRoutes = require('./routes/tasks');
 app.use(projectsRoutes);
 app.use(tasksRoutes);
+app.use(indexRoutes);
